@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natura Design System — 3 Propuestas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-white:#FFFFFF;
+    --color-navy:#142D31;
+    --color-verde-natura:#048643;
+    --color-next-colour:#DF1995;
+    --color-next-savour:#DC4405;
+    --color-next-welltive:#00C1D4;
+    --color-next-protech:#78BE21;
+    --color-primary:var(--color-verde-natura);
+    --color-on-primary:var(--color-white);
+    --color-primary-tint:#E3F0E7;
+    --color-link:var(--color-next-welltive);
+    --color-success:#2F9E52;
+    --color-warning:#D98C15;
+    --color-alert:#C9402D;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:#dcd9d1; font-family:'DM Sans', sans-serif; color:var(--color-navy);}
+  a{color:inherit;}
+
+  /* sticky proposal switcher — matches nothing in Paper, pure navigation utility */
+  .tabs{position:sticky; top:0; z-index:50; display:flex; background:var(--color-navy); padding:0 24px;}
+  .tabs a{display:flex; align-items:center; gap:8px; padding:14px 18px; font-family:'DM Sans'; font-size:13px; font-weight:600; color:#ffffffaa; text-decoration:none; border-bottom:3px solid transparent;}
+  .tabs a i{width:8px; height:8px; border-radius:50%;}
+  .tabs a.active, .tabs a:hover{color:#fff; border-color:var(--dot);}
+
+  .wrap{max-width:960px; margin:0 auto; background:#fff;}
+
+  .proposal{padding-bottom:48px;}
+  .band{height:10px; display:flex;}
+  .band > div{flex:1;}
+  .section{padding:8px 56px 32px 56px;}
+  .section h2{font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; margin:0 0 20px 0; color:var(--color-navy);}
+  .header{padding:48px 56px 24px 56px;}
+  .header .eyebrow{display:block; font-family:var(--font-display); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;}
+  .header h1{font-family:var(--font-display); font-weight:800; font-size:40px; margin:0 0 10px 0; color:var(--color-navy);}
+  .header p{font-family:var(--font-body); font-size:15px; color:var(--ink-muted); max-width:600px; margin:0; line-height:1.5;}
+
+  .swatch-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .swatch{display:flex; flex-direction:column; width:104px; gap:6px;}
+  .swatch .chip{width:104px; height:64px; border-radius:var(--r-card);}
+  .swatch b{font-family:var(--font-body); font-size:11px; font-weight:600;}
+  .swatch span{font-family:var(--font-body); font-size:9px; color:var(--ink-muted);}
+  .note{font-family:var(--font-body); font-size:12px; color:var(--ink-muted); margin-top:14px; max-width:680px; line-height:1.5;}
+
+  .role-cards{display:flex; gap:12px; margin-top:16px;}
+  .role-card{display:flex; flex-direction:column; justify-content:flex-end; height:130px; border-radius:var(--r-card); padding:20px; color:#fff;}
+  .role-card b{font-family:var(--font-display); font-weight:700; font-size:16px;}
+  .role-card span{font-family:var(--font-body); font-size:11px; opacity:0.85;}
+  .role-card.primary{flex:7; background:var(--color-primary);}
+  .role-card.secondary{flex:3; background:var(--secondary); color:var(--on-secondary);}
+
+  .tint-banner{margin-top:14px; padding:14px 18px; border-radius:var(--r-card); background:var(--color-primary-tint); display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; font-family:var(--font-body); font-size:13px;}
+  .tint-banner b{color:#1f5c37;}
+  .tint-banner span{color:#4c7a5c;}
+
+  .ramp{display:flex; height:56px; border-radius:var(--r-card); overflow:hidden; border:1px solid var(--divider); margin-top:14px;}
+  .ramp div{flex:1; display:flex; align-items:flex-end; padding:8px; font-family:var(--font-body); font-size:9px;}
+
+  .signal-row{display:flex; gap:20px; margin-top:14px; flex-wrap:wrap;}
+  .signal{display:flex; align-items:center; gap:7px; font-family:var(--font-body); font-size:12px;}
+  .signal i{width:11px; height:11px; border-radius:50%; display:inline-block;}
+
+  .type-row{display:flex; align-items:baseline; gap:20px; padding:16px 0; border-top:1px solid var(--divider);}
+  .type-row:last-child{border-bottom:1px solid var(--divider);}
+  .type-row .label{font-family:var(--font-body); font-size:11px; color:var(--ink-muted); width:96px; flex-shrink:0;}
+
+  .btn-row{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
+  .btn{font-family:var(--font-body); font-weight:600; font-size:14px; padding:12px 22px; border-radius:var(--r-btn);}
+  .btn.primary{background:var(--color-primary); color:#fff;}
+  .btn.secondary{background:transparent; border:1.5px solid var(--color-navy); color:var(--color-navy);}
+  .btn.text{color:var(--color-primary); background:transparent; padding:12px 8px;}
+  .btn.disabled{background:var(--divider); color:var(--ink-muted);}
+
+  .spacing-row{display:flex; align-items:center; gap:16px; padding:5px 0;}
+  .spacing-row div{background:var(--accent); flex-shrink:0;}
+  .spacing-row span{font-family:var(--font-body); font-size:12px; color:var(--ink-muted);}
+
+  .radius-row{display:flex; gap:20px; align-items:flex-end; flex-wrap:wrap;}
+  .radius-swatch{display:flex; flex-direction:column; gap:8px; align-items:center;}
+  .radius-swatch div{width:56px; height:56px; background:var(--color-navy);}
+  .radius-swatch span{font-family:var(--font-body); font-size:11px; color:var(--ink-muted);}
+
+  .principle{padding:18px 0; border-top:1px solid var(--divider);}
+  .principle:last-child{border-bottom:1px solid var(--divider);}
+  .principle b{display:block; font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--color-primary); margin-bottom:4px;}
+  .principle p{font-family:var(--font-body); font-size:14px; color:#3c4b44; margin:0; max-width:680px; line-height:1.5;}
+
+  .why p{font-family:var(--font-body); font-size:14px; color:#3c4b44; line-height:1.6; max-width:680px; margin:0;}
+
+  /* example screen */
+  .example-wrap{display:flex; justify-content:center; padding-top:4px;}
+  .phone{width:300px; border-radius:var(--r-img); border:1px solid var(--divider); overflow:hidden;}
+  .phone .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 18px;}
+  .phone .nav b{font-family:var(--font-display); font-weight:700; font-size:13px;}
+  .phone .badge-count{width:26px; height:26px; border-radius:50%; border:1px solid var(--control-border); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-size:11px;}
+  .phone .product-img{position:relative; margin:0 18px; height:160px; border-radius:var(--r-img); background:var(--color-primary-tint); display:flex; align-items:flex-end; padding:12px;}
+  .phone .product-img span{font-family:var(--font-body); font-size:10px; color:#4c7a5c;}
+  .phone .new-badge{position:absolute; top:12px; left:12px; padding:5px 12px; border-radius:999px; background:var(--secondary); color:var(--on-secondary); font-family:var(--font-display); font-weight:700; font-size:9px; letter-spacing:0.04em;}
+  .phone .body{padding:16px 18px 20px 18px;}
+  .phone .avail{display:flex; align-items:center; gap:6px; margin-bottom:8px;}
+  .phone .avail i{width:6px; height:6px; border-radius:50%; background:var(--color-success);}
+  .phone .avail span{font-family:var(--font-body); font-weight:600; font-size:11px; color:#1f6e3b;}
+  .phone .title-row{display:flex; justify-content:space-between; align-items:baseline;}
+  .phone .title-row b{font-family:var(--font-display); font-weight:800; font-size:18px;}
+  .phone .title-row span{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--color-primary);}
+  .phone .desc{font-family:var(--font-body); font-size:12px; color:#3c4b44; margin:8px 0 0 0; line-height:1.5;}
+  .phone .cta{margin-top:16px; text-align:center; padding:13px; border-radius:var(--r-btn); background:var(--color-primary); color:#fff; font-family:var(--font-body); font-weight:700; font-size:13px;}
+  .phone .ship{margin-top:10px; padding:10px 14px; border-radius:var(--r-img); background:var(--color-primary-tint); font-family:var(--font-body); font-size:11px; color:#1f5c37;}
+
+  footer{text-align:center; padding:32px 20px; font-family:'DM Sans'; font-size:12px; color:#777; background:#fff;}
+</style>
+</head>
+<body>
+
+<nav class="tabs" id="tabs">
+  <a href="#botanico" data-target="botanico" style="--dot:#DF1995"><i style="background:#DF1995"></i>Botánico</a>
+  <a href="#clinico" data-target="clinico" style="--dot:#00C1D4"><i style="background:#00C1D4"></i>Clínico</a>
+  <a href="#tropical" data-target="tropical" style="--dot:#78BE21"><i style="background:#78BE21"></i>Tropical</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ BOTÁNICO ============ -->
+<section id="botanico" class="proposal" style="
+  background:#F7F2E7; --divider:#E6D9BE; --control-border:#D4C29C; --ink-muted:#8A7A5C;
+  --secondary:var(--color-next-colour); --on-secondary:#fff; --accent:var(--color-next-colour);
+  --font-display:'DM Sans'; --font-body:'DM Sans'; --r-btn:999px; --r-img:20px; --r-card:12px;">
+  <div class="band"><div style="background:var(--color-primary)"></div></div>
+  <div class="header">
+    <span class="eyebrow">Natura Design System — Propuesta 1</span>
+    <h1>Botánico</h1>
+    <p>Cálido y confiable. Fondo bone, verde como ancla, acentos de línea de negocio usados con moderación.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores de marca — fuente oficial</h2>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:var(--color-verde-natura)"></div><b>Verde Natura</b><span>Pantone 355C · #048643</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-navy)"></div><b>Navy</b><span>Pantone 546C · #142D31</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-colour)"></div><b>NextColour</b><span>#DF1995 · Rosa</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-savour)"></div><b>NextSavour</b><span>#DC4405 · Naranja</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-welltive)"></div><b>NextWelltive</b><span>#00C1D4 · Azul</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-protech)"></div><b>NextProtech</b><span>#78BE21 · Verde limón</span></div>
+    </div>
+    <p class="note">Esta propuesta usa Verde Natura como primary y NextColour (Rosa) como secondary — el resto queda disponible para categorización de líneas de negocio.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores — roles</h2>
+    <div class="role-cards">
+      <div class="role-card primary"><b>primary</b><span>#048643 · on-primary #FFFFFF · AA 5.1:1</span></div>
+      <div class="role-card secondary"><b>secondary</b><span>#DF1995 · AA 4.5:1 (bold)</span></div>
+    </div>
+    <div class="tint-banner"><b>primary-tint #E3F0E7</b><span>Banners y fondos suaves de marca</span></div>
+    <div class="ramp">
+      <div style="background:#F7F2E7; color:#8A7A5C">background</div>
+      <div style="background:#FFFDF8; color:#8A7A5C">surface</div>
+      <div style="background:#E6D9BE; color:#5b4f38">divider</div>
+      <div style="background:#D4C29C; color:#3c4b44">control-border</div>
+      <div style="background:#8A7A5C; color:#fff">ink-muted</div>
+      <div style="background:#142D31; color:#fff">ink</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal"><i style="background:var(--color-success)"></i>success</div>
+      <div class="signal"><i style="background:var(--color-warning)"></i>warning</div>
+      <div class="signal"><i style="background:var(--color-alert)"></i>alert</div>
+      <div class="signal"><i style="background:var(--color-link)"></i>link</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tipografía — DM Sans</h2>
+    <div class="type-row"><span class="label">display · 48</span><span style="font-family:'DM Sans'; font-weight:800; font-size:48px; letter-spacing:-0.02em;">Extracto</span></div>
+    <div class="type-row"><span class="label">headline · 34</span><span style="font-family:'DM Sans'; font-weight:700; font-size:34px;">Extracto natural</span></div>
+    <div class="type-row"><span class="label">title · 24</span><span style="font-family:'DM Sans'; font-weight:600; font-size:24px;">Nuestros productos</span></div>
+    <div class="type-row"><span class="label">subtitle · 16</span><span style="font-family:'DM Sans'; font-weight:600; font-size:16px;">Composición y origen</span></div>
+    <div class="type-row"><span class="label">body · 16</span><span style="font-family:'DM Sans'; font-size:16px; color:#3c4b44;">Texto para párrafos e interfaces.</span></div>
+    <div class="type-row"><span class="label">body-small · 14</span><span style="font-family:'DM Sans'; font-size:14px; color:#5b6b63;">Notas al pie y aclaraciones.</span></div>
+    <div class="type-row"><span class="label">caption · 12</span><span style="font-family:'DM Sans'; font-size:12px; color:#8a9690;">Lote 048643 — NE-01</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Botones</h2>
+    <div class="btn-row">
+      <div class="btn primary">Primario</div>
+      <div class="btn secondary">Secundario</div>
+      <div class="btn text">Texto</div>
+      <div class="btn disabled">Deshabilitado</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Spacing — escala 4px, generosa</h2>
+    <div class="spacing-row"><div style="width:4px; height:14px;"></div><span>4 · xs</span></div>
+    <div class="spacing-row"><div style="width:8px; height:14px;"></div><span>8 · sm</span></div>
+    <div class="spacing-row"><div style="width:16px; height:14px;"></div><span>16 · md</span></div>
+    <div class="spacing-row"><div style="width:24px; height:14px;"></div><span>24 · lg</span></div>
+    <div class="spacing-row"><div style="width:32px; height:14px;"></div><span>32 · xl</span></div>
+    <div class="spacing-row"><div style="width:64px; height:14px;"></div><span>64 · 2xl</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Corner radius — orgánico</h2>
+    <div class="radius-row">
+      <div class="radius-swatch"><div style="border-radius:4px"></div><span>4 · xs</span></div>
+      <div class="radius-swatch"><div style="border-radius:8px"></div><span>8 · sm</span></div>
+      <div class="radius-swatch"><div style="border-radius:12px"></div><span>12 · md</span></div>
+      <div class="radius-swatch"><div style="border-radius:20px"></div><span>20 · lg</span></div>
+      <div class="radius-swatch"><div style="border-radius:999px"></div><span>full</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Principios</h2>
+    <div class="principle"><b>Cálida y cercana</b><p>La marca habla de bienestar y relaciones. Las interfaces se sienten suaves: esquinas redondeadas (radius-md), espacio generoso (space-6 entre bloques) y un solo acento de color por pantalla.</p></div>
+    <div class="principle"><b>Naturaleza sin cliché</b><p>La biodiversidad está en el producto y en la fotografía, no en ornamentos. Nada de hojas decorativas ni degradados verdes.</p></div>
+    <div class="principle"><b>Clara antes que expresiva</b><p>El naranja de marca (primary) es un relleno, no un color de texto: sobre fondos claros no alcanza 4.5:1. El texto encima siempre va en on-primary.</p></div>
+  </div>
+
+  <div class="section why">
+    <h2>Por qué Botánico</h2>
+    <p>Cálido y cercano antes que botánico-literal: DM Sans, fondo oat y radios suaves comunican bienestar sin hojas ni degradados verdes. El Rosa de NextColour queda como único acento para que Verde Natura se reserve para la acción principal — y no compita con el resto de la pantalla.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ejemplo aplicado</h2>
+    <div class="example-wrap">
+      <div class="phone">
+        <div class="nav"><b>Natura Extracta</b><div class="badge-count">2</div></div>
+        <div class="product-img"><div class="new-badge">NUEVO</div><span>Foto de producto — Extracto de Jengibre 30ml</span></div>
+        <div class="body">
+          <div class="avail"><i></i><span>Disponible</span></div>
+          <div class="title-row"><b>Extracto de Jengibre</b><span>$189</span></div>
+          <p class="desc">Prensado en frío de raíz de jengibre cultivada en Veracruz. Ideal para infusiones y repostería.</p>
+          <div class="cta">Agregar a la bolsa</div>
+          <div class="ship">Tu pedido llega el jueves si compras antes de las 2pm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLÍNICO ============ -->
+<section id="clinico" class="proposal" style="
+  background:#FFFFFF; --divider:#E4E4E0; --control-border:#B9C7CA; --ink-muted:#5E7478;
+  --secondary:var(--color-next-welltive); --on-secondary:var(--color-navy); --accent:var(--color-primary);
+  --font-display:'Space Grotesk'; --font-body:'Inter'; --r-btn:4px; --r-img:4px; --r-card:4px;">
+  <div class="band"><div style="background:var(--color-next-welltive)"></div></div>
+  <div class="header">
+    <span class="eyebrow">Natura Design System — Propuesta 2</span>
+    <h1>Clínico</h1>
+    <p>Preciso y legible. Tipografía en fila, líneas finas, un solo acento — pensado para extractos e ingredientes.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores de marca — fuente oficial</h2>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:var(--color-verde-natura)"></div><b>Verde Natura</b><span>Pantone 355C · #048643</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-navy)"></div><b>Navy</b><span>Pantone 546C · #142D31</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-colour)"></div><b>NextColour</b><span>#DF1995 · Rosa</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-savour)"></div><b>NextSavour</b><span>#DC4405 · Naranja</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-welltive)"></div><b>NextWelltive</b><span>#00C1D4 · Azul</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-protech)"></div><b>NextProtech</b><span>#78BE21 · Verde limón</span></div>
+    </div>
+    <p class="note">Esta propuesta usa Verde Natura como primary y NextWelltive (Cyan) como secondary — ligado a "datos/info" en la hoja de marca.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores — roles</h2>
+    <div class="role-cards">
+      <div class="role-card primary"><b>primary</b><span>#048643 · on-primary #FFFFFF · AA 5.1:1</span></div>
+      <div class="role-card secondary"><b>secondary</b><span>#00C1D4 · on-secondary #142D31 · AA 6.6:1</span></div>
+    </div>
+    <div class="tint-banner"><b>primary-tint #E3F0E7</b><span>Banners y fondos suaves de marca</span></div>
+    <div class="ramp">
+      <div style="background:#EEF3F4; color:#5E7478">background</div>
+      <div style="background:#FFFFFF; color:#5E7478">surface</div>
+      <div style="background:#D7E0E2; color:#3c4b44">divider</div>
+      <div style="background:#B9C7CA; color:#142D31">control-border</div>
+      <div style="background:#5E7478; color:#fff">ink-muted</div>
+      <div style="background:#142D31; color:#fff">ink</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal"><i style="background:var(--color-success); border-radius:2px;"></i>success</div>
+      <div class="signal"><i style="background:var(--color-warning); border-radius:2px;"></i>warning</div>
+      <div class="signal"><i style="background:var(--color-alert); border-radius:2px;"></i>alert</div>
+      <div class="signal"><i style="background:var(--color-link); border-radius:2px;"></i>link</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tipografía — Space Grotesk · Inter</h2>
+    <div class="type-row"><span class="label">display · 48</span><span style="font-family:'Space Grotesk'; font-weight:600; font-size:48px;">Extracto</span></div>
+    <div class="type-row"><span class="label">headline · 34</span><span style="font-family:'Space Grotesk'; font-weight:600; font-size:34px;">Extracto natural</span></div>
+    <div class="type-row"><span class="label">title · 24</span><span style="font-family:'Space Grotesk'; font-weight:500; font-size:24px;">Ficha técnica</span></div>
+    <div class="type-row"><span class="label">subtitle · 16</span><span style="font-family:'Inter'; font-weight:500; font-size:16px;">Composición y origen</span></div>
+    <div class="type-row"><span class="label">body · 16</span><span style="font-family:'Inter'; font-size:16px; color:#3c4b44;">Inter para texto de interfaz y datos técnicos.</span></div>
+    <div class="type-row"><span class="label">body-small · 14</span><span style="font-family:'Inter'; font-size:14px; color:#5b6b63;">Notas al pie y metadatos.</span></div>
+    <div class="type-row"><span class="label">caption · 12</span><span style="font-family:'Inter'; font-size:12px; color:var(--color-primary);">LOTE 048643 — NE-01</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Botones</h2>
+    <div class="btn-row">
+      <div class="btn primary">Primario</div>
+      <div class="btn secondary">Secundario</div>
+      <div class="btn text">Texto</div>
+      <div class="btn disabled">Deshabilitado</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Spacing — grilla densa 4px</h2>
+    <div class="spacing-row"><div style="width:4px; height:14px;"></div><span>4 · 01</span></div>
+    <div class="spacing-row"><div style="width:8px; height:14px;"></div><span>8 · 02</span></div>
+    <div class="spacing-row"><div style="width:12px; height:14px;"></div><span>12 · 03</span></div>
+    <div class="spacing-row"><div style="width:16px; height:14px;"></div><span>16 · 04</span></div>
+    <div class="spacing-row"><div style="width:24px; height:14px;"></div><span>24 · 05</span></div>
+    <div class="spacing-row"><div style="width:32px; height:14px;"></div><span>32 · 06</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Corner radius — afilado</h2>
+    <div class="radius-row">
+      <div class="radius-swatch"><div style="border-radius:0px"></div><span>0px</span></div>
+      <div class="radius-swatch"><div style="border-radius:2px"></div><span>2px</span></div>
+      <div class="radius-swatch"><div style="border-radius:4px"></div><span>4px</span></div>
+      <div class="radius-swatch"><div style="border-radius:6px"></div><span>6px</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Principios</h2>
+    <div class="principle"><b>Cálida y cercana</b><p>La marca habla de bienestar y relaciones. Las interfaces se sienten suaves: esquinas redondeadas (radius-md), espacio generoso (space-6 entre bloques) y un solo acento de color por pantalla.</p></div>
+    <div class="principle"><b>Naturaleza sin cliché</b><p>La biodiversidad está en el producto y en la fotografía, no en ornamentos. Nada de hojas decorativas ni degradados verdes.</p></div>
+    <div class="principle"><b>Clara antes que expresiva</b><p>El naranja de marca (primary) es un relleno, no un color de texto: sobre fondos claros no alcanza 4.5:1. El texto encima siempre va en on-primary.</p></div>
+  </div>
+
+  <div class="section why">
+    <h2>Por qué Clínico</h2>
+    <p>Precisión antes que personalidad: Space Grotesk + Inter, radios casi rectos y una grilla densa transmiten exactitud — apropiado para una marca que vive de fórmulas y extractos. El Cyan de NextWelltive como acento se lee como "dato verificable", no como capricho visual.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ejemplo aplicado</h2>
+    <div class="example-wrap">
+      <div class="phone">
+        <div class="nav"><b>Natura Extracta</b><div class="badge-count">2</div></div>
+        <div class="product-img"><div class="new-badge">NUEVO</div><span>Foto de producto — Extracto de Jengibre 30ml</span></div>
+        <div class="body">
+          <div class="avail"><i style="border-radius:1px;"></i><span>Disponible</span></div>
+          <div class="title-row"><b style="font-family:'Space Grotesk';">Extracto de Jengibre</b><span style="font-family:'Space Grotesk';">$189</span></div>
+          <p class="desc">Prensado en frío de raíz de jengibre cultivada en Veracruz. Ideal para infusiones y repostería.</p>
+          <div class="cta" style="font-family:'Inter';">Agregar a la bolsa</div>
+          <div class="ship">Tu pedido llega el jueves si compras antes de las 2pm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TROPICAL ============ -->
+<section id="tropical" class="proposal" style="
+  background:#FFFFFF; --divider:#ECE9DF; --control-border:#C9D9B0; --ink-muted:#6B7A5E;
+  --secondary:var(--color-next-protech); --on-secondary:var(--color-navy); --accent:var(--color-next-savour);
+  --font-display:'Manrope'; --font-body:'Manrope'; --r-btn:999px; --r-img:28px; --r-card:20px;">
+  <div class="band" style="display:flex;">
+    <div style="flex:1; background:var(--color-primary)"></div>
+    <div style="flex:1; background:var(--color-next-colour)"></div>
+    <div style="flex:1; background:var(--color-next-protech)"></div>
+    <div style="flex:1; background:var(--color-next-welltive)"></div>
+  </div>
+  <div class="header">
+    <span class="eyebrow">Natura Design System — Propuesta 3</span>
+    <h1>Tropical</h1>
+    <p>Enérgico y multi-marca. Fondo blanco, verde como ancla, los 4 colores de línea de negocio como sistema de acentos vivo.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores de marca — fuente oficial</h2>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:var(--color-verde-natura)"></div><b>Verde Natura</b><span>Pantone 355C · #048643</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-navy)"></div><b>Navy</b><span>Pantone 546C · #142D31</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-colour)"></div><b>NextColour</b><span>#DF1995 · Rosa</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-savour)"></div><b>NextSavour</b><span>#DC4405 · Naranja</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-welltive)"></div><b>NextWelltive</b><span>#00C1D4 · Azul</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-protech)"></div><b>NextProtech</b><span>#78BE21 · Verde limón</span></div>
+    </div>
+    <p class="note">Esta propuesta usa Verde Natura como primary y NextProtech (Verde limón) como secondary — el resto de líneas aparece en botones y spacing como acentos vivos.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores — roles</h2>
+    <div class="role-cards">
+      <div class="role-card primary"><b>primary</b><span>#048643 · on-primary #FFFFFF · AA 5.1:1</span></div>
+      <div class="role-card secondary"><b>secondary</b><span>#78BE21 · on-secondary #142D31 · AA 6.3:1</span></div>
+    </div>
+    <div class="tint-banner"><b>primary-tint #E3F0E7</b><span>Banners y fondos suaves de marca</span></div>
+    <div class="ramp">
+      <div style="background:#F6FAF2; color:#6B7A5E">background</div>
+      <div style="background:#FFFFFF; color:#6B7A5E">surface</div>
+      <div style="background:#E2EAD6; color:#3c4b44">divider</div>
+      <div style="background:#C9D9B0; color:#3c4b44">control-border</div>
+      <div style="background:#6B7A5E; color:#fff">ink-muted</div>
+      <div style="background:#142D31; color:#fff">ink</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal"><i style="background:var(--color-success)"></i>success</div>
+      <div class="signal"><i style="background:var(--color-warning)"></i>warning</div>
+      <div class="signal"><i style="background:var(--color-alert)"></i>alert</div>
+      <div class="signal"><i style="background:var(--color-link)"></i>link</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tipografía — Manrope</h2>
+    <div class="type-row"><span class="label">display · 48</span><span style="font-family:'Manrope'; font-weight:800; font-size:48px;">Extracto</span></div>
+    <div class="type-row"><span class="label">headline · 34</span><span style="font-family:'Manrope'; font-weight:700; font-size:34px; color:var(--color-primary);">Extracto natural</span></div>
+    <div class="type-row"><span class="label">title · 24</span><span style="font-family:'Manrope'; font-weight:700; font-size:24px;">Nuestros productos</span></div>
+    <div class="type-row"><span class="label">subtitle · 16</span><span style="font-family:'Manrope'; font-weight:600; font-size:16px;">Composición y origen</span></div>
+    <div class="type-row"><span class="label">body · 16</span><span style="font-family:'Manrope'; font-size:16px; color:#3c4b44;">Tono cercano y directo.</span></div>
+    <div class="type-row"><span class="label">body-small · 14</span><span style="font-family:'Manrope'; font-size:14px; color:#5b6b63;">Notas al pie y aclaraciones.</span></div>
+    <div class="type-row"><span class="label">caption · 12</span><span style="font-family:'Manrope'; font-weight:700; font-size:12px; color:var(--color-next-savour); letter-spacing:0.04em; text-transform:uppercase;">Lote 048643 — NE-01</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Botones</h2>
+    <div class="btn-row">
+      <div class="btn primary">Primario</div>
+      <div class="btn" style="background:var(--color-next-colour); color:#fff; border-radius:999px;">Color</div>
+      <div class="btn secondary">Secundario</div>
+      <div class="btn text">Texto</div>
+      <div class="btn disabled">Deshabilitado</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Spacing — saltos audaces</h2>
+    <div class="spacing-row"><div style="width:4px; height:14px;"></div><span>4 · xs</span></div>
+    <div class="spacing-row"><div style="width:8px; height:14px;"></div><span>8 · sm</span></div>
+    <div class="spacing-row"><div style="width:16px; height:14px;"></div><span>16 · md</span></div>
+    <div class="spacing-row"><div style="width:24px; height:14px;"></div><span>24 · lg</span></div>
+    <div class="spacing-row"><div style="width:40px; height:14px;"></div><span>40 · xl</span></div>
+    <div class="spacing-row"><div style="width:64px; height:14px;"></div><span>64 · 2xl</span></div>
+    <div class="spacing-row"><div style="width:96px; height:14px;"></div><span>96 · 3xl</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Corner radius — grande y audaz</h2>
+    <div class="radius-row">
+      <div class="radius-swatch"><div style="border-radius:8px; background:var(--color-next-protech);"></div><span>8 · sm</span></div>
+      <div class="radius-swatch"><div style="border-radius:16px; background:var(--color-next-protech);"></div><span>16 · md</span></div>
+      <div class="radius-swatch"><div style="border-radius:24px; background:var(--color-next-protech);"></div><span>24 · lg</span></div>
+      <div class="radius-swatch"><div style="border-radius:32px; background:var(--color-next-protech);"></div><span>32 · xl</span></div>
+      <div class="radius-swatch"><div style="border-radius:999px; background:var(--color-next-protech);"></div><span>full</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Principios</h2>
+    <div class="principle"><b>Cálida y cercana</b><p>La marca habla de bienestar y relaciones. Las interfaces se sienten suaves: esquinas redondeadas (radius-md), espacio generoso (space-6 entre bloques) y un solo acento de color por pantalla.</p></div>
+    <div class="principle"><b>Naturaleza sin cliché</b><p>La biodiversidad está en el producto y en la fotografía, no en ornamentos. Nada de hojas decorativas ni degradados verdes.</p></div>
+    <div class="principle"><b>Clara antes que expresiva</b><p>El naranja de marca (primary) es un relleno, no un color de texto: sobre fondos claros no alcanza 4.5:1. El texto encima siempre va en on-primary.</p></div>
+  </div>
+
+  <div class="section why">
+    <h2>Por qué Tropical</h2>
+    <p>Energía multi-línea sin perder ancla: Manrope bold, radios grandes y saltos de espaciado audaces dan lugar a que las 4 líneas de negocio convivan en una sola pantalla sin verse caóticas. El Verde limón de NextProtech como acento mantiene la misma familia cromática que Verde Natura, recordando que todo parte de la misma raíz.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ejemplo aplicado</h2>
+    <div class="example-wrap">
+      <div class="phone">
+        <div class="nav"><b style="font-weight:800;">Natura Extracta</b><div class="badge-count">2</div></div>
+        <div class="product-img"><div class="new-badge">NUEVO</div><span>Foto de producto — Extracto de Jengibre 30ml</span></div>
+        <div class="body">
+          <div class="avail"><i></i><span>Disponible</span></div>
+          <div class="title-row"><b>Extracto de Jengibre</b><span>$189</span></div>
+          <p class="desc">Prensado en frío de raíz de jengibre cultivada en Veracruz. Ideal para infusiones y repostería.</p>
+          <div class="cta" style="font-weight:800;">Agregar a la bolsa</div>
+          <div class="ship" style="border-radius:20px;">Tu pedido llega el jueves si compras antes de las 2pm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>Natura Design System — 3 propuestas · generado para revisión de cliente</footer>
+
+<script>
+  const links = document.querySelectorAll('.tabs a');
+  const sections = Array.from(links).map(l => document.getElementById(l.dataset.target));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector('.tabs a[data-target="' + entry.target.id + '"]');
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => s && observer.observe(s));
+</script>
+
+</body>
+</html>
