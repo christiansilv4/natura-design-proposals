@@ -28,6 +28,37 @@
   body{margin:0; background:#dcd9d1; font-family:'DM Sans', sans-serif; color:var(--color-navy);}
   a{color:inherit;}
 
+  /* ================= HERO / COVER ================= */
+  .hero{
+    min-height:92vh; display:flex; flex-direction:column; justify-content:center;
+    padding:80px 8vw; background:radial-gradient(1200px 600px at 20% -10%, #1d2f27 0%, #10181a 55%, #0c1113 100%);
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(120deg, rgba(4,134,67,0.18), transparent 40%),
+                linear-gradient(240deg, rgba(223,25,149,0.14), transparent 45%),
+                linear-gradient(0deg, rgba(0,193,212,0.10), transparent 40%);
+  }
+  .hero-kicker{font-family:'DM Sans'; font-weight:600; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:#8fd6ab; margin-bottom:22px; z-index:1;}
+  .hero h1{font-family:'DM Sans'; font-weight:800; font-size:clamp(40px,6vw,76px); line-height:1.02; letter-spacing:-0.03em; margin:0 0 24px 0; z-index:1; max-width:900px;}
+  .hero h1 em{font-style:normal; color:#8fd6ab;}
+  .hero p.lede{font-family:'DM Sans'; font-size:18px; color:#c7d3cd; max-width:560px; line-height:1.6; margin:0 0 48px 0; z-index:1;}
+  .hero-cards{display:flex; gap:18px; flex-wrap:wrap; z-index:1;}
+  .hero-card{
+    display:flex; flex-direction:column; gap:14px; width:240px; padding:22px; border-radius:20px;
+    background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(6px);
+    text-decoration:none; color:#fff; transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .hero-card:hover{transform:translateY(-4px); background:rgba(255,255,255,0.08);}
+  .hero-card .dotrow{display:flex; gap:6px;}
+  .hero-card .dotrow i{width:14px; height:14px; border-radius:50%;}
+  .hero-card b{font-family:'DM Sans'; font-weight:700; font-size:19px;}
+  .hero-card span{font-family:'DM Sans'; font-size:13px; color:#aebcb5; line-height:1.5;}
+  .hero-card .arrow{font-size:13px; color:#8fd6ab; font-weight:600;}
+  .scroll-cue{position:absolute; bottom:32px; left:8vw; z-index:1; font-family:'DM Sans'; font-size:12px; color:#7a8a83; letter-spacing:0.08em; text-transform:uppercase; display:flex; align-items:center; gap:10px;}
+  .scroll-cue::after{content:""; width:1px; height:28px; background:linear-gradient(#7a8a83, transparent);}
+
   /* sticky proposal switcher — matches nothing in Paper, pure navigation utility */
   .tabs{position:sticky; top:0; z-index:50; display:flex; background:var(--color-navy); padding:0 24px;}
   .tabs a{display:flex; align-items:center; gap:8px; padding:14px 18px; font-family:'DM Sans'; font-size:13px; font-weight:600; color:#ffffffaa; text-decoration:none; border-bottom:3px solid transparent;}
@@ -122,6 +153,33 @@
 </style>
 </head>
 <body>
+
+<header class="hero">
+  <span class="hero-kicker">Natura Design System · Propuestas</span>
+  <h1>Tres direcciones.<br>Un solo <em>origen de marca</em>.</h1>
+  <p class="lede">Botánico, Clínico y Tropical parten exactamente de los mismos colores oficiales (Verde Natura, Navy y las 4 líneas de negocio) y de los mismos principios de voz. Lo que cambia es cómo se componen.</p>
+  <div class="hero-cards">
+    <a class="hero-card" href="#botanico">
+      <div class="dotrow"><i style="background:#048643"></i><i style="background:#DF1995"></i></div>
+      <b>Botánico</b>
+      <span>Cálido, DM Sans, radios suaves. Acento Rosa.</span>
+      <span class="arrow">Ver propuesta →</span>
+    </a>
+    <a class="hero-card" href="#clinico">
+      <div class="dotrow"><i style="background:#048643"></i><i style="background:#00C1D4"></i></div>
+      <b>Clínico</b>
+      <span>Preciso, Space Grotesk, radios rectos. Acento Cyan.</span>
+      <span class="arrow">Ver propuesta →</span>
+    </a>
+    <a class="hero-card" href="#tropical">
+      <div class="dotrow"><i style="background:#048643"></i><i style="background:#78BE21"></i></div>
+      <b>Tropical</b>
+      <span>Vivo, Manrope bold, radios grandes. Acento Verde limón.</span>
+      <span class="arrow">Ver propuesta →</span>
+    </a>
+  </div>
+  <span class="scroll-cue">Desplázate para ver cada propuesta</span>
+</header>
 
 <nav class="tabs" id="tabs">
   <a href="#botanico" data-target="botanico" style="--dot:#DF1995"><i style="background:#DF1995"></i>Botánico</a>
