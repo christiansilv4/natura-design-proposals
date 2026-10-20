@@ -129,12 +129,19 @@ footer{text-align:center; padding:32px 20px; font-family:'DM Sans'; font-size:12
   font-family:var(--font-body); font-size:14px; color:var(--color-navy); padding:12px 14px; width:100%;
   border:1.5px solid var(--control-border); border-radius:var(--r-card); background:#fff; outline:none;
 }
-.field select{
-  font-family:var(--font-body); font-size:14px; color:var(--color-navy); padding:12px 14px; width:100%;
-  border:1.5px solid var(--control-border); border-radius:var(--r-card); background:#fff; outline:none;
-  -webkit-appearance:menulist; appearance:auto; cursor:pointer;
+.select-wrap{position:relative;}
+.select-wrap select{
+  font-family:var(--font-body); font-size:14px; color:var(--color-navy); padding:12px 36px 12px 14px; width:100%;
+  border:1.5px solid var(--control-border); border-radius:var(--r-card); background:#fff; outline:none; cursor:pointer;
+  appearance:none; -webkit-appearance:none; -moz-appearance:none;
 }
-.field input:focus, .field select:focus{border-color:var(--color-primary);}
+.select-wrap::after{
+  content:""; position:absolute; right:17px; top:50%; width:7px; height:7px;
+  border-right:1.5px solid var(--ink-muted); border-bottom:1.5px solid var(--ink-muted);
+  transform:translateY(-65%) rotate(45deg); pointer-events:none;
+}
+.field input:focus, .select-wrap select:focus{border-color:var(--color-primary);}
+.select-wrap:focus-within::after{border-color:var(--color-primary);}
 .field .hint{font-family:var(--font-body); font-size:11.5px; color:var(--ink-muted);}
 .checkbox-field{display:flex; align-items:flex-start; gap:10px; margin-bottom:24px;}
 .checkbox-field input{accent-color:var(--color-primary); margin-top:3px; flex-shrink:0;}
