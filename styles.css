@@ -100,6 +100,20 @@ a{color:inherit;}
 .btn.secondary{background:transparent; border:1.5px solid var(--color-navy); color:var(--color-navy);}
 .btn.text{color:var(--color-primary); background:transparent; padding:12px 8px;}
 .btn.disabled{background:var(--divider); color:var(--ink-muted);}
+.btn{cursor:pointer; user-select:none; display:inline-block;}
+
+/* ---- modal ---- */
+dialog.modal{
+  border:none; border-radius:var(--r-card); padding:28px; width:380px; max-width:85vw;
+  box-shadow:0 24px 60px rgba(20,45,49,0.25); font-family:var(--font-body);
+}
+dialog.modal::backdrop{background:rgba(20,45,49,0.5);}
+.modal-head{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px;}
+.modal-head h4{font-family:var(--font-display); font-weight:700; font-size:19px; margin:0; color:var(--color-navy);}
+.modal-close{background:none; border:none; font-size:22px; line-height:1; color:var(--ink-muted); cursor:pointer; padding:0;}
+.modal-body{font-family:var(--font-body); font-size:14px; color:#3c4b44; line-height:1.55; margin:0 0 24px 0;}
+.modal-actions{display:flex; gap:12px;}
+.modal-actions .btn{flex:1; text-align:center;}
 
 .spacing-row{display:flex; align-items:center; gap:16px; padding:5px 0;}
 .spacing-row div{background:var(--accent); flex-shrink:0;}

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -85,6 +85,24 @@
       <div class="btn text">Texto</div>
       <div class="btn disabled">Deshabilitado</div>
     </div>
+  </div>
+
+  <div class="section">
+    <h2>Modal</h2>
+    <div class="btn-row">
+      <div class="btn primary" onclick="document.getElementById('modal-cli').showModal()">Ver ejemplo</div>
+    </div>
+    <dialog id="modal-cli" class="modal">
+      <div class="modal-head">
+        <h4 style="font-family:'Space Grotesk';">Confirma tu suscripción</h4>
+        <button class="modal-close" onclick="document.getElementById('modal-cli').close()" aria-label="Cerrar">×</button>
+      </div>
+      <p class="modal-body">Recibirás novedades de Natura Extracta una vez al mes. Puedes cancelar cuando quieras.</p>
+      <div class="modal-actions">
+        <div class="btn secondary" onclick="document.getElementById('modal-cli').close()">Cancelar</div>
+        <div class="btn primary" onclick="document.getElementById('modal-cli').close()" style="font-family:'Inter';">Confirmar</div>
+      </div>
+    </dialog>
   </div>
 
   <div class="section">

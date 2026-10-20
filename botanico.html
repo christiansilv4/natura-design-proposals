@@ -88,6 +88,24 @@
   </div>
 
   <div class="section">
+    <h2>Modal</h2>
+    <div class="btn-row">
+      <div class="btn primary" onclick="document.getElementById('modal-bot').showModal()">Ver ejemplo</div>
+    </div>
+    <dialog id="modal-bot" class="modal">
+      <div class="modal-head">
+        <h4>Confirma tu suscripción</h4>
+        <button class="modal-close" onclick="document.getElementById('modal-bot').close()" aria-label="Cerrar">×</button>
+      </div>
+      <p class="modal-body">Recibirás novedades de Natura Extracta una vez al mes. Puedes cancelar cuando quieras.</p>
+      <div class="modal-actions">
+        <div class="btn secondary" onclick="document.getElementById('modal-bot').close()">Cancelar</div>
+        <div class="btn primary" onclick="document.getElementById('modal-bot').close()">Confirmar</div>
+      </div>
+    </dialog>
+  </div>
+
+  <div class="section">
     <h2>Spacing — escala 4px, generosa</h2>
     <div class="spacing-row"><div style="width:4px; height:14px;"></div><span>4 · xs</span></div>
     <div class="spacing-row"><div style="width:8px; height:14px;"></div><span>8 · sm</span></div>
