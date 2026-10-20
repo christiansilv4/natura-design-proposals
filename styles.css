@@ -15,7 +15,7 @@
   --color-alert:#C9402D;
 }
 *{box-sizing:border-box;}
-body{margin:0; background:#dcd9d1; font-family:'DM Sans', sans-serif; color:var(--color-navy);}
+body{margin:0; background:#FFFFFF; font-family:'DM Sans', sans-serif; color:var(--color-navy);}
 a{color:inherit;}
 
 /* ================= HERO / COVER ================= */
