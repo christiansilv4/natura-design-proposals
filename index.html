@@ -161,6 +161,18 @@
   .wizard-step h4{font-family:var(--font-display); font-weight:700; font-size:19px; margin:0 0 4px 0; color:var(--color-navy);}
   .wizard-step .substep{font-family:var(--font-body); font-size:13px; color:var(--ink-muted); margin:0 0 22px 0;}
   .choice-grid{display:flex; flex-direction:column; gap:10px; margin-bottom:26px;}
+  .field{display:flex; flex-direction:column; gap:6px; margin-bottom:18px;}
+  .field label{font-family:var(--font-body); font-weight:600; font-size:12.5px; color:var(--color-navy);}
+  .field input, .field select{
+    font-family:var(--font-body); font-size:14px; color:var(--color-navy); padding:12px 14px; width:100%;
+    border:1.5px solid var(--control-border); border-radius:var(--r-card); background:#fff; outline:none; appearance:none;
+  }
+  .field select{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><path d="M1 1l5 5 5-5" stroke="%23142D31" stroke-width="1.6" fill="none"/></svg>'); background-repeat:no-repeat; background-position:right 14px center; padding-right:34px;}
+  .field input:focus, .field select:focus{border-color:var(--color-primary);}
+  .field .hint{font-family:var(--font-body); font-size:11.5px; color:var(--ink-muted);}
+  .checkbox-field{display:flex; align-items:flex-start; gap:10px; margin-bottom:24px;}
+  .checkbox-field input{accent-color:var(--color-primary); margin-top:3px; flex-shrink:0;}
+  .checkbox-field label{font-family:var(--font-body); font-size:13px; color:#3c4b44; line-height:1.4;}
   .choice{display:flex; align-items:center; gap:12px; padding:14px 16px; border:1.5px solid var(--divider); border-radius:var(--r-card); font-family:var(--font-body); font-size:14px; cursor:pointer; transition:border-color .15s ease, background .15s ease;}
   .choice input{accent-color:var(--color-primary); margin:0;}
   .choice:has(input:checked){border-color:var(--color-primary); background:var(--color-primary-tint);}
@@ -313,35 +325,36 @@
         <div class="dot" data-step-dot="3">3</div>
       </div>
       <div class="wizard-step" data-step-panel="1">
-        <h4>¿Qué línea te interesa?</h4>
-        <p class="substep">Paso 1 de 3 — elige una línea de negocio</p>
-        <div class="choice-grid">
-          <label class="choice"><input type="radio" name="linea-bot" checked><span class="dotcolor" style="background:#DF1995"></span>NextColour</label>
-          <label class="choice"><input type="radio" name="linea-bot"><span class="dotcolor" style="background:#DC4405"></span>NextSavour</label>
-          <label class="choice"><input type="radio" name="linea-bot"><span class="dotcolor" style="background:#00C1D4"></span>NextWelltive</label>
-          <label class="choice"><input type="radio" name="linea-bot"><span class="dotcolor" style="background:#78BE21"></span>NextProtech</label>
-        </div>
+        <h4>Tus datos</h4>
+        <p class="substep">Paso 1 de 3 — para crear tu cuenta</p>
+        <div class="field"><label>Nombre completo</label><input type="text" placeholder="María Fernanda López"></div>
+        <div class="field"><label>Correo electrónico</label><input type="email" placeholder="maria@correo.com"><span class="hint">Te enviaremos ahí la confirmación del pedido.</span></div>
         <div class="wizard-actions"><div class="btn primary" data-next="2">Continuar</div></div>
       </div>
       <div class="wizard-step" data-step-panel="2" hidden>
-        <h4>Elige tu presentación</h4>
-        <p class="substep">Paso 2 de 3 — tamaño del frasco</p>
-        <div class="choice-grid">
-          <label class="choice"><input type="radio" name="tam-bot" checked>30ml · viaje</label>
-          <label class="choice"><input type="radio" name="tam-bot">60ml · uso diario</label>
-          <label class="choice"><input type="radio" name="tam-bot">100ml · ahorro</label>
+        <h4>Preferencias</h4>
+        <p class="substep">Paso 2 de 3 — así personalizamos tus recomendaciones</p>
+        <div class="field"><label>Línea de interés</label>
+          <select>
+            <option>NextColour — Rosa</option>
+            <option>NextSavour — Naranja</option>
+            <option>NextWelltive — Azul</option>
+            <option>NextProtech — Verde limón</option>
+          </select>
         </div>
+        <div class="field"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"><span class="hint">Opcional — para avisarte del envío.</span></div>
+        <div class="checkbox-field"><input type="checkbox" id="news-bot" checked><label for="news-bot">Quiero recibir novedades de Natura Extracta por correo.</label></div>
         <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3">Continuar</div></div>
       </div>
       <div class="wizard-step" data-step-panel="3" hidden>
-        <h4>Confirma tu pedido</h4>
-        <p class="substep">Paso 3 de 3 — revisa antes de agregar</p>
+        <h4>Confirma tus datos</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de enviar</p>
         <div class="summary">
-          <div class="row"><span>Línea</span><b>NextColour</b></div>
-          <div class="row"><span>Presentación</span><b>30ml · viaje</b></div>
-          <div class="row"><span>Entrega</span><b>Llega el jueves</b></div>
+          <div class="row"><span>Nombre</span><b>María Fernanda López</b></div>
+          <div class="row"><span>Correo</span><b>maria@correo.com</b></div>
+          <div class="row"><span>Línea de interés</span><b>NextColour — Rosa</b></div>
         </div>
-        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary">Agregar a la bolsa</div></div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary">Enviar</div></div>
       </div>
     </div>
   </div>
@@ -450,35 +463,36 @@
         <div class="dot" data-step-dot="3">3</div>
       </div>
       <div class="wizard-step" data-step-panel="1">
-        <h4 style="font-family:'Space Grotesk';">¿Qué línea te interesa?</h4>
-        <p class="substep">Paso 1 de 3 — elige una línea de negocio</p>
-        <div class="choice-grid">
-          <label class="choice"><input type="radio" name="linea-cli" checked><span class="dotcolor" style="background:#00C1D4"></span>NextWelltive</label>
-          <label class="choice"><input type="radio" name="linea-cli"><span class="dotcolor" style="background:#DF1995"></span>NextColour</label>
-          <label class="choice"><input type="radio" name="linea-cli"><span class="dotcolor" style="background:#DC4405"></span>NextSavour</label>
-          <label class="choice"><input type="radio" name="linea-cli"><span class="dotcolor" style="background:#78BE21"></span>NextProtech</label>
-        </div>
+        <h4 style="font-family:'Space Grotesk';">Tus datos</h4>
+        <p class="substep">Paso 1 de 3 — para crear tu cuenta</p>
+        <div class="field"><label>Nombre completo</label><input type="text" placeholder="María Fernanda López"></div>
+        <div class="field"><label>Correo electrónico</label><input type="email" placeholder="maria@correo.com"><span class="hint">Te enviaremos ahí la confirmación del pedido.</span></div>
         <div class="wizard-actions"><div class="btn primary" data-next="2">Continuar</div></div>
       </div>
       <div class="wizard-step" data-step-panel="2" hidden>
-        <h4 style="font-family:'Space Grotesk';">Elige tu presentación</h4>
-        <p class="substep">Paso 2 de 3 — tamaño del frasco</p>
-        <div class="choice-grid">
-          <label class="choice"><input type="radio" name="tam-cli" checked>30ml · viaje</label>
-          <label class="choice"><input type="radio" name="tam-cli">60ml · uso diario</label>
-          <label class="choice"><input type="radio" name="tam-cli">100ml · ahorro</label>
+        <h4 style="font-family:'Space Grotesk';">Preferencias</h4>
+        <p class="substep">Paso 2 de 3 — así personalizamos tus recomendaciones</p>
+        <div class="field"><label>Línea de interés</label>
+          <select>
+            <option>NextWelltive — Azul</option>
+            <option>NextColour — Rosa</option>
+            <option>NextSavour — Naranja</option>
+            <option>NextProtech — Verde limón</option>
+          </select>
         </div>
+        <div class="field"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"><span class="hint">Opcional — para avisarte del envío.</span></div>
+        <div class="checkbox-field"><input type="checkbox" id="news-cli" checked><label for="news-cli">Quiero recibir novedades de Natura Extracta por correo.</label></div>
         <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3">Continuar</div></div>
       </div>
       <div class="wizard-step" data-step-panel="3" hidden>
-        <h4 style="font-family:'Space Grotesk';">Confirma tu pedido</h4>
-        <p class="substep">Paso 3 de 3 — revisa antes de agregar</p>
+        <h4 style="font-family:'Space Grotesk';">Confirma tus datos</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de enviar</p>
         <div class="summary">
-          <div class="row"><span>Línea</span><b>NextWelltive</b></div>
-          <div class="row"><span>Presentación</span><b>30ml · viaje</b></div>
-          <div class="row"><span>Entrega</span><b>Llega el jueves</b></div>
+          <div class="row"><span>Nombre</span><b>María Fernanda López</b></div>
+          <div class="row"><span>Correo</span><b>maria@correo.com</b></div>
+          <div class="row"><span>Línea de interés</span><b>NextWelltive — Azul</b></div>
         </div>
-        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-family:'Inter';">Agregar a la bolsa</div></div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-family:'Inter';">Enviar</div></div>
       </div>
     </div>
   </div>
@@ -595,35 +609,36 @@
         <div class="dot" data-step-dot="3">3</div>
       </div>
       <div class="wizard-step" data-step-panel="1">
-        <h4 style="font-weight:800;">¿Qué línea te interesa?</h4>
-        <p class="substep">Paso 1 de 3 — elige una línea de negocio</p>
-        <div class="choice-grid">
-          <label class="choice"><input type="radio" name="linea-trop" checked><span class="dotcolor" style="background:#78BE21"></span>NextProtech</label>
-          <label class="choice"><input type="radio" name="linea-trop"><span class="dotcolor" style="background:#DF1995"></span>NextColour</label>
-          <label class="choice"><input type="radio" name="linea-trop"><span class="dotcolor" style="background:#DC4405"></span>NextSavour</label>
-          <label class="choice"><input type="radio" name="linea-trop"><span class="dotcolor" style="background:#00C1D4"></span>NextWelltive</label>
-        </div>
+        <h4 style="font-weight:800;">Tus datos</h4>
+        <p class="substep">Paso 1 de 3 — para crear tu cuenta</p>
+        <div class="field"><label>Nombre completo</label><input type="text" placeholder="María Fernanda López"></div>
+        <div class="field"><label>Correo electrónico</label><input type="email" placeholder="maria@correo.com"><span class="hint">Te enviaremos ahí la confirmación del pedido.</span></div>
         <div class="wizard-actions"><div class="btn primary" data-next="2" style="font-weight:800;">Continuar</div></div>
       </div>
       <div class="wizard-step" data-step-panel="2" hidden>
-        <h4 style="font-weight:800;">Elige tu presentación</h4>
-        <p class="substep">Paso 2 de 3 — tamaño del frasco</p>
-        <div class="choice-grid">
-          <label class="choice"><input type="radio" name="tam-trop" checked>30ml · viaje</label>
-          <label class="choice"><input type="radio" name="tam-trop">60ml · uso diario</label>
-          <label class="choice"><input type="radio" name="tam-trop">100ml · ahorro</label>
+        <h4 style="font-weight:800;">Preferencias</h4>
+        <p class="substep">Paso 2 de 3 — así personalizamos tus recomendaciones</p>
+        <div class="field"><label>Línea de interés</label>
+          <select>
+            <option>NextProtech — Verde limón</option>
+            <option>NextColour — Rosa</option>
+            <option>NextSavour — Naranja</option>
+            <option>NextWelltive — Azul</option>
+          </select>
         </div>
+        <div class="field"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"><span class="hint">Opcional — para avisarte del envío.</span></div>
+        <div class="checkbox-field"><input type="checkbox" id="news-trop" checked><label for="news-trop">Quiero recibir novedades de Natura Extracta por correo.</label></div>
         <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3" style="font-weight:800;">Continuar</div></div>
       </div>
       <div class="wizard-step" data-step-panel="3" hidden>
-        <h4 style="font-weight:800;">Confirma tu pedido</h4>
-        <p class="substep">Paso 3 de 3 — revisa antes de agregar</p>
+        <h4 style="font-weight:800;">Confirma tus datos</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de enviar</p>
         <div class="summary">
-          <div class="row"><span>Línea</span><b>NextProtech</b></div>
-          <div class="row"><span>Presentación</span><b>30ml · viaje</b></div>
-          <div class="row"><span>Entrega</span><b>Llega el jueves</b></div>
+          <div class="row"><span>Nombre</span><b>María Fernanda López</b></div>
+          <div class="row"><span>Correo</span><b>maria@correo.com</b></div>
+          <div class="row"><span>Línea de interés</span><b>NextProtech — Verde limón</b></div>
         </div>
-        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-weight:800;">Agregar a la bolsa</div></div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-weight:800;">Enviar</div></div>
       </div>
     </div>
   </div>
