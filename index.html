@@ -150,6 +150,26 @@
   .phone .ship{margin-top:10px; padding:10px 14px; border-radius:var(--r-img); background:var(--color-primary-tint); font-family:var(--font-body); font-size:11px; color:#1f5c37;}
 
   footer{text-align:center; padding:32px 20px; font-family:'DM Sans'; font-size:12px; color:#777; background:#fff;}
+
+  /* ---- wizard / progressive disclosure form ---- */
+  .wizard{max-width:420px;}
+  .wizard-progress{display:flex; align-items:center; margin-bottom:28px;}
+  .wizard-progress .dot{width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:700; font-size:12px; background:var(--divider); color:var(--ink-muted); flex-shrink:0; transition:background .2s ease, color .2s ease;}
+  .wizard-progress .dot.active, .wizard-progress .dot.done{background:var(--color-primary); color:#fff;}
+  .wizard-progress .bar{flex:1; height:2px; background:var(--divider); margin:0 8px; transition:background .2s ease;}
+  .wizard-progress .bar.done{background:var(--color-primary);}
+  .wizard-step h4{font-family:var(--font-display); font-weight:700; font-size:19px; margin:0 0 4px 0; color:var(--color-navy);}
+  .wizard-step .substep{font-family:var(--font-body); font-size:13px; color:var(--ink-muted); margin:0 0 22px 0;}
+  .choice-grid{display:flex; flex-direction:column; gap:10px; margin-bottom:26px;}
+  .choice{display:flex; align-items:center; gap:12px; padding:14px 16px; border:1.5px solid var(--divider); border-radius:var(--r-card); font-family:var(--font-body); font-size:14px; cursor:pointer; transition:border-color .15s ease, background .15s ease;}
+  .choice input{accent-color:var(--color-primary); margin:0;}
+  .choice:has(input:checked){border-color:var(--color-primary); background:var(--color-primary-tint);}
+  .choice .dotcolor{width:14px; height:14px; border-radius:50%; flex-shrink:0;}
+  .wizard-actions{display:flex; gap:12px; margin-top:2px;}
+  .wizard-actions .btn{flex:1; text-align:center; cursor:pointer; user-select:none;}
+  .summary{display:flex; flex-direction:column; gap:10px; padding:18px 20px; border-radius:var(--r-card); background:var(--color-primary-tint); margin-bottom:24px; font-family:var(--font-body); font-size:13px;}
+  .summary .row{display:flex; justify-content:space-between; color:#3c4b44;}
+  .summary .row b{color:var(--color-navy);}
 </style>
 </head>
 <body>
@@ -279,31 +299,49 @@
     </div>
   </div>
 
-  <div class="section">
-    <h2>Principios</h2>
-    <div class="principle"><b>Cálida y cercana</b><p>La marca habla de bienestar y relaciones. Las interfaces se sienten suaves: esquinas redondeadas (radius-md), espacio generoso (space-6 entre bloques) y un solo acento de color por pantalla.</p></div>
-    <div class="principle"><b>Naturaleza sin cliché</b><p>La biodiversidad está en el producto y en la fotografía, no en ornamentos. Nada de hojas decorativas ni degradados verdes.</p></div>
-    <div class="principle"><b>Clara antes que expresiva</b><p>El naranja de marca (primary) es un relleno, no un color de texto: sobre fondos claros no alcanza 4.5:1. El texto encima siempre va en on-primary.</p></div>
-  </div>
-
   <div class="section why">
     <h2>Por qué Botánico</h2>
     <p>Cálido y cercano antes que botánico-literal: DM Sans, fondo oat y radios suaves comunican bienestar sin hojas ni degradados verdes. El Rosa de NextColour queda como único acento para que Verde Natura se reserve para la acción principal — y no compita con el resto de la pantalla.</p>
   </div>
 
   <div class="section">
-    <h2>Ejemplo aplicado</h2>
-    <div class="example-wrap">
-      <div class="phone">
-        <div class="nav"><b>Natura Extracta</b><div class="badge-count">2</div></div>
-        <div class="product-img"><div class="new-badge">NUEVO</div><span>Foto de producto — Extracto de Jengibre 30ml</span></div>
-        <div class="body">
-          <div class="avail"><i></i><span>Disponible</span></div>
-          <div class="title-row"><b>Extracto de Jengibre</b><span>$189</span></div>
-          <p class="desc">Prensado en frío de raíz de jengibre cultivada en Veracruz. Ideal para infusiones y repostería.</p>
-          <div class="cta">Agregar a la bolsa</div>
-          <div class="ship">Tu pedido llega el jueves si compras antes de las 2pm.</div>
+    <h2>Ejemplo aplicado — formulario wizard</h2>
+    <div class="wizard">
+      <div class="wizard-progress">
+        <div class="dot active" data-step-dot="1">1</div><div class="bar"></div>
+        <div class="dot" data-step-dot="2">2</div><div class="bar"></div>
+        <div class="dot" data-step-dot="3">3</div>
+      </div>
+      <div class="wizard-step" data-step-panel="1">
+        <h4>¿Qué línea te interesa?</h4>
+        <p class="substep">Paso 1 de 3 — elige una línea de negocio</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="linea-bot" checked><span class="dotcolor" style="background:#DF1995"></span>NextColour</label>
+          <label class="choice"><input type="radio" name="linea-bot"><span class="dotcolor" style="background:#DC4405"></span>NextSavour</label>
+          <label class="choice"><input type="radio" name="linea-bot"><span class="dotcolor" style="background:#00C1D4"></span>NextWelltive</label>
+          <label class="choice"><input type="radio" name="linea-bot"><span class="dotcolor" style="background:#78BE21"></span>NextProtech</label>
         </div>
+        <div class="wizard-actions"><div class="btn primary" data-next="2">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="2" hidden>
+        <h4>Elige tu presentación</h4>
+        <p class="substep">Paso 2 de 3 — tamaño del frasco</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="tam-bot" checked>30ml · viaje</label>
+          <label class="choice"><input type="radio" name="tam-bot">60ml · uso diario</label>
+          <label class="choice"><input type="radio" name="tam-bot">100ml · ahorro</label>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="3" hidden>
+        <h4>Confirma tu pedido</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de agregar</p>
+        <div class="summary">
+          <div class="row"><span>Línea</span><b>NextColour</b></div>
+          <div class="row"><span>Presentación</span><b>30ml · viaje</b></div>
+          <div class="row"><span>Entrega</span><b>Llega el jueves</b></div>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary">Agregar a la bolsa</div></div>
       </div>
     </div>
   </div>
@@ -398,31 +436,49 @@
     </div>
   </div>
 
-  <div class="section">
-    <h2>Principios</h2>
-    <div class="principle"><b>Cálida y cercana</b><p>La marca habla de bienestar y relaciones. Las interfaces se sienten suaves: esquinas redondeadas (radius-md), espacio generoso (space-6 entre bloques) y un solo acento de color por pantalla.</p></div>
-    <div class="principle"><b>Naturaleza sin cliché</b><p>La biodiversidad está en el producto y en la fotografía, no en ornamentos. Nada de hojas decorativas ni degradados verdes.</p></div>
-    <div class="principle"><b>Clara antes que expresiva</b><p>El naranja de marca (primary) es un relleno, no un color de texto: sobre fondos claros no alcanza 4.5:1. El texto encima siempre va en on-primary.</p></div>
-  </div>
-
   <div class="section why">
     <h2>Por qué Clínico</h2>
     <p>Precisión antes que personalidad: Space Grotesk + Inter, radios casi rectos y una grilla densa transmiten exactitud — apropiado para una marca que vive de fórmulas y extractos. El Cyan de NextWelltive como acento se lee como "dato verificable", no como capricho visual.</p>
   </div>
 
   <div class="section">
-    <h2>Ejemplo aplicado</h2>
-    <div class="example-wrap">
-      <div class="phone">
-        <div class="nav"><b>Natura Extracta</b><div class="badge-count">2</div></div>
-        <div class="product-img"><div class="new-badge">NUEVO</div><span>Foto de producto — Extracto de Jengibre 30ml</span></div>
-        <div class="body">
-          <div class="avail"><i style="border-radius:1px;"></i><span>Disponible</span></div>
-          <div class="title-row"><b style="font-family:'Space Grotesk';">Extracto de Jengibre</b><span style="font-family:'Space Grotesk';">$189</span></div>
-          <p class="desc">Prensado en frío de raíz de jengibre cultivada en Veracruz. Ideal para infusiones y repostería.</p>
-          <div class="cta" style="font-family:'Inter';">Agregar a la bolsa</div>
-          <div class="ship">Tu pedido llega el jueves si compras antes de las 2pm.</div>
+    <h2>Ejemplo aplicado — formulario wizard</h2>
+    <div class="wizard">
+      <div class="wizard-progress">
+        <div class="dot active" data-step-dot="1">1</div><div class="bar"></div>
+        <div class="dot" data-step-dot="2">2</div><div class="bar"></div>
+        <div class="dot" data-step-dot="3">3</div>
+      </div>
+      <div class="wizard-step" data-step-panel="1">
+        <h4 style="font-family:'Space Grotesk';">¿Qué línea te interesa?</h4>
+        <p class="substep">Paso 1 de 3 — elige una línea de negocio</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="linea-cli" checked><span class="dotcolor" style="background:#00C1D4"></span>NextWelltive</label>
+          <label class="choice"><input type="radio" name="linea-cli"><span class="dotcolor" style="background:#DF1995"></span>NextColour</label>
+          <label class="choice"><input type="radio" name="linea-cli"><span class="dotcolor" style="background:#DC4405"></span>NextSavour</label>
+          <label class="choice"><input type="radio" name="linea-cli"><span class="dotcolor" style="background:#78BE21"></span>NextProtech</label>
         </div>
+        <div class="wizard-actions"><div class="btn primary" data-next="2">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="2" hidden>
+        <h4 style="font-family:'Space Grotesk';">Elige tu presentación</h4>
+        <p class="substep">Paso 2 de 3 — tamaño del frasco</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="tam-cli" checked>30ml · viaje</label>
+          <label class="choice"><input type="radio" name="tam-cli">60ml · uso diario</label>
+          <label class="choice"><input type="radio" name="tam-cli">100ml · ahorro</label>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="3" hidden>
+        <h4 style="font-family:'Space Grotesk';">Confirma tu pedido</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de agregar</p>
+        <div class="summary">
+          <div class="row"><span>Línea</span><b>NextWelltive</b></div>
+          <div class="row"><span>Presentación</span><b>30ml · viaje</b></div>
+          <div class="row"><span>Entrega</span><b>Llega el jueves</b></div>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-family:'Inter';">Agregar a la bolsa</div></div>
       </div>
     </div>
   </div>
@@ -525,31 +581,49 @@
     </div>
   </div>
 
-  <div class="section">
-    <h2>Principios</h2>
-    <div class="principle"><b>Cálida y cercana</b><p>La marca habla de bienestar y relaciones. Las interfaces se sienten suaves: esquinas redondeadas (radius-md), espacio generoso (space-6 entre bloques) y un solo acento de color por pantalla.</p></div>
-    <div class="principle"><b>Naturaleza sin cliché</b><p>La biodiversidad está en el producto y en la fotografía, no en ornamentos. Nada de hojas decorativas ni degradados verdes.</p></div>
-    <div class="principle"><b>Clara antes que expresiva</b><p>El naranja de marca (primary) es un relleno, no un color de texto: sobre fondos claros no alcanza 4.5:1. El texto encima siempre va en on-primary.</p></div>
-  </div>
-
   <div class="section why">
     <h2>Por qué Tropical</h2>
     <p>Energía multi-línea sin perder ancla: Manrope bold, radios grandes y saltos de espaciado audaces dan lugar a que las 4 líneas de negocio convivan en una sola pantalla sin verse caóticas. El Verde limón de NextProtech como acento mantiene la misma familia cromática que Verde Natura, recordando que todo parte de la misma raíz.</p>
   </div>
 
   <div class="section">
-    <h2>Ejemplo aplicado</h2>
-    <div class="example-wrap">
-      <div class="phone">
-        <div class="nav"><b style="font-weight:800;">Natura Extracta</b><div class="badge-count">2</div></div>
-        <div class="product-img"><div class="new-badge">NUEVO</div><span>Foto de producto — Extracto de Jengibre 30ml</span></div>
-        <div class="body">
-          <div class="avail"><i></i><span>Disponible</span></div>
-          <div class="title-row"><b>Extracto de Jengibre</b><span>$189</span></div>
-          <p class="desc">Prensado en frío de raíz de jengibre cultivada en Veracruz. Ideal para infusiones y repostería.</p>
-          <div class="cta" style="font-weight:800;">Agregar a la bolsa</div>
-          <div class="ship" style="border-radius:20px;">Tu pedido llega el jueves si compras antes de las 2pm.</div>
+    <h2>Ejemplo aplicado — formulario wizard</h2>
+    <div class="wizard">
+      <div class="wizard-progress">
+        <div class="dot active" data-step-dot="1">1</div><div class="bar"></div>
+        <div class="dot" data-step-dot="2">2</div><div class="bar"></div>
+        <div class="dot" data-step-dot="3">3</div>
+      </div>
+      <div class="wizard-step" data-step-panel="1">
+        <h4 style="font-weight:800;">¿Qué línea te interesa?</h4>
+        <p class="substep">Paso 1 de 3 — elige una línea de negocio</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="linea-trop" checked><span class="dotcolor" style="background:#78BE21"></span>NextProtech</label>
+          <label class="choice"><input type="radio" name="linea-trop"><span class="dotcolor" style="background:#DF1995"></span>NextColour</label>
+          <label class="choice"><input type="radio" name="linea-trop"><span class="dotcolor" style="background:#DC4405"></span>NextSavour</label>
+          <label class="choice"><input type="radio" name="linea-trop"><span class="dotcolor" style="background:#00C1D4"></span>NextWelltive</label>
         </div>
+        <div class="wizard-actions"><div class="btn primary" data-next="2" style="font-weight:800;">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="2" hidden>
+        <h4 style="font-weight:800;">Elige tu presentación</h4>
+        <p class="substep">Paso 2 de 3 — tamaño del frasco</p>
+        <div class="choice-grid">
+          <label class="choice"><input type="radio" name="tam-trop" checked>30ml · viaje</label>
+          <label class="choice"><input type="radio" name="tam-trop">60ml · uso diario</label>
+          <label class="choice"><input type="radio" name="tam-trop">100ml · ahorro</label>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3" style="font-weight:800;">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="3" hidden>
+        <h4 style="font-weight:800;">Confirma tu pedido</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de agregar</p>
+        <div class="summary">
+          <div class="row"><span>Línea</span><b>NextProtech</b></div>
+          <div class="row"><span>Presentación</span><b>30ml · viaje</b></div>
+          <div class="row"><span>Entrega</span><b>Llega el jueves</b></div>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-weight:800;">Agregar a la bolsa</div></div>
       </div>
     </div>
   </div>
@@ -572,6 +646,24 @@
     });
   }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
   sections.forEach(s => s && observer.observe(s));
+
+  document.querySelectorAll('.wizard').forEach(wizard => {
+    const panels = wizard.querySelectorAll('.wizard-step');
+    const dots = wizard.querySelectorAll('.wizard-progress .dot');
+    const bars = wizard.querySelectorAll('.wizard-progress .bar');
+    function show(step){
+      panels.forEach(p => { p.hidden = Number(p.dataset.stepPanel) !== step; });
+      dots.forEach(d => {
+        const s = Number(d.dataset.stepDot);
+        d.classList.toggle('active', s === step);
+        d.classList.toggle('done', s < step);
+      });
+      bars.forEach((b, i) => b.classList.toggle('done', i < step - 1));
+    }
+    wizard.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', () => show(Number(btn.dataset.next))));
+    wizard.querySelectorAll('[data-back]').forEach(btn => btn.addEventListener('click', () => show(Number(btn.dataset.back))));
+    show(1);
+  });
 </script>
 
 </body>
