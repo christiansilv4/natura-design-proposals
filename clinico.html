@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínico — Natura Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="tabs">
+  <a href="index.html">← Inicio</a>
+  <a href="botanico.html" style="--dot:#DF1995"><i style="background:#DF1995"></i>Botánico</a>
+  <a href="clinico.html" class="active" style="--dot:#00C1D4"><i style="background:#00C1D4"></i>Clínico</a>
+  <a href="tropical.html" style="--dot:#78BE21"><i style="background:#78BE21"></i>Tropical</a>
+</nav>
+
+<div class="wrap">
+<section class="proposal" style="
+  background:#FFFFFF; --divider:#E4E4E0; --control-border:#B9C7CA; --ink-muted:#5E7478;
+  --secondary:var(--color-next-welltive); --on-secondary:var(--color-navy); --accent:var(--color-primary);
+  --font-display:'Space Grotesk'; --font-body:'Inter'; --r-btn:4px; --r-img:4px; --r-card:4px;">
+  <div class="band"><div style="background:var(--color-next-welltive)"></div></div>
+  <div class="header">
+    <span class="eyebrow">Natura Design System — Propuesta 2</span>
+    <h1>Clínico</h1>
+    <p>Preciso y legible. Tipografía en fila, líneas finas, un solo acento — pensado para extractos e ingredientes.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores de marca — fuente oficial</h2>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:var(--color-verde-natura)"></div><b>Verde Natura</b><span>Pantone 355C · #048643</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-navy)"></div><b>Navy</b><span>Pantone 546C · #142D31</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-colour)"></div><b>NextColour</b><span>#DF1995 · Rosa</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-savour)"></div><b>NextSavour</b><span>#DC4405 · Naranja</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-welltive)"></div><b>NextWelltive</b><span>#00C1D4 · Azul</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-protech)"></div><b>NextProtech</b><span>#78BE21 · Verde limón</span></div>
+    </div>
+    <p class="note">Esta propuesta usa Verde Natura como primary y NextWelltive (Cyan) como secondary — ligado a "datos/info" en la hoja de marca.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores — roles</h2>
+    <div class="role-cards">
+      <div class="role-card primary"><b>primary</b><span>#048643 · on-primary #FFFFFF · AA 5.1:1</span></div>
+      <div class="role-card secondary"><b>secondary</b><span>#00C1D4 · on-secondary #142D31 · AA 6.6:1</span></div>
+    </div>
+    <div class="tint-banner"><b>primary-tint #E3F0E7</b><span>Banners y fondos suaves de marca</span></div>
+    <div class="ramp">
+      <div style="background:#EEF3F4; color:#5E7478">background</div>
+      <div style="background:#FFFFFF; color:#5E7478">surface</div>
+      <div style="background:#D7E0E2; color:#3c4b44">divider</div>
+      <div style="background:#B9C7CA; color:#142D31">control-border</div>
+      <div style="background:#5E7478; color:#fff">ink-muted</div>
+      <div style="background:#142D31; color:#fff">ink</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal"><i style="background:var(--color-success); border-radius:2px;"></i>success</div>
+      <div class="signal"><i style="background:var(--color-warning); border-radius:2px;"></i>warning</div>
+      <div class="signal"><i style="background:var(--color-alert); border-radius:2px;"></i>alert</div>
+      <div class="signal"><i style="background:var(--color-link); border-radius:2px;"></i>link</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tipografía — Space Grotesk · Inter</h2>
+    <div class="type-row"><span class="label">display · 48</span><span style="font-family:'Space Grotesk'; font-weight:600; font-size:48px;">Extracto</span></div>
+    <div class="type-row"><span class="label">headline · 34</span><span style="font-family:'Space Grotesk'; font-weight:600; font-size:34px;">Extracto natural</span></div>
+    <div class="type-row"><span class="label">title · 24</span><span style="font-family:'Space Grotesk'; font-weight:500; font-size:24px;">Ficha técnica</span></div>
+    <div class="type-row"><span class="label">subtitle · 16</span><span style="font-family:'Inter'; font-weight:500; font-size:16px;">Composición y origen</span></div>
+    <div class="type-row"><span class="label">body · 16</span><span style="font-family:'Inter'; font-size:16px; color:#3c4b44;">Inter para texto de interfaz y datos técnicos.</span></div>
+    <div class="type-row"><span class="label">body-small · 14</span><span style="font-family:'Inter'; font-size:14px; color:#5b6b63;">Notas al pie y metadatos.</span></div>
+    <div class="type-row"><span class="label">caption · 12</span><span style="font-family:'Inter'; font-size:12px; color:var(--color-primary);">LOTE 048643 — NE-01</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Botones</h2>
+    <div class="btn-row">
+      <div class="btn primary">Primario</div>
+      <div class="btn secondary">Secundario</div>
+      <div class="btn text">Texto</div>
+      <div class="btn disabled">Deshabilitado</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Spacing — grilla densa 4px</h2>
+    <div class="spacing-row"><div style="width:4px; height:14px;"></div><span>4 · 01</span></div>
+    <div class="spacing-row"><div style="width:8px; height:14px;"></div><span>8 · 02</span></div>
+    <div class="spacing-row"><div style="width:12px; height:14px;"></div><span>12 · 03</span></div>
+    <div class="spacing-row"><div style="width:16px; height:14px;"></div><span>16 · 04</span></div>
+    <div class="spacing-row"><div style="width:24px; height:14px;"></div><span>24 · 05</span></div>
+    <div class="spacing-row"><div style="width:32px; height:14px;"></div><span>32 · 06</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Corner radius — afilado</h2>
+    <div class="radius-row">
+      <div class="radius-swatch"><div style="border-radius:0px"></div><span>0px</span></div>
+      <div class="radius-swatch"><div style="border-radius:2px"></div><span>2px</span></div>
+      <div class="radius-swatch"><div style="border-radius:4px"></div><span>4px</span></div>
+      <div class="radius-swatch"><div style="border-radius:6px"></div><span>6px</span></div>
+    </div>
+  </div>
+
+  <div class="section why">
+    <h2>Por qué Clínico</h2>
+    <p>Precisión antes que personalidad: Space Grotesk + Inter, radios casi rectos y una grilla densa transmiten exactitud — apropiado para una marca que vive de fórmulas y extractos. El Cyan de NextWelltive como acento se lee como "dato verificable", no como capricho visual.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ejemplo aplicado — formulario wizard</h2>
+    <div class="wizard">
+      <div class="wizard-progress">
+        <div class="dot active" data-step-dot="1">1</div><div class="bar"></div>
+        <div class="dot" data-step-dot="2">2</div><div class="bar"></div>
+        <div class="dot" data-step-dot="3">3</div>
+      </div>
+      <div class="wizard-step" data-step-panel="1">
+        <h4 style="font-family:'Space Grotesk';">Tus datos</h4>
+        <p class="substep">Paso 1 de 3 — para crear tu cuenta</p>
+        <div class="field"><label>Nombre completo</label><input type="text" placeholder="María Fernanda López"></div>
+        <div class="field"><label>Correo electrónico</label><input type="email" placeholder="maria@correo.com"><span class="hint">Te enviaremos ahí la confirmación del pedido.</span></div>
+        <div class="wizard-actions"><div class="btn primary" data-next="2">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="2" hidden>
+        <h4 style="font-family:'Space Grotesk';">Preferencias</h4>
+        <p class="substep">Paso 2 de 3 — así personalizamos tus recomendaciones</p>
+        <div class="field"><label>Línea de interés</label>
+          <select>
+            <option>NextWelltive — Azul</option>
+            <option>NextColour — Rosa</option>
+            <option>NextSavour — Naranja</option>
+            <option>NextProtech — Verde limón</option>
+          </select>
+        </div>
+        <div class="field"><label>Presentación</label>
+          <select>
+            <option>30ml · viaje</option>
+            <option>60ml · uso diario</option>
+            <option>100ml · ahorro</option>
+          </select>
+        </div>
+        <div class="field"><label>¿Cómo nos conociste?</label>
+          <select>
+            <option>Redes sociales</option>
+            <option>Recomendación</option>
+            <option>Tienda física</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"><span class="hint">Opcional — para avisarte del envío.</span></div>
+        <div class="checkbox-field"><input type="checkbox" id="news-cli" checked><label for="news-cli">Quiero recibir novedades de Natura Extracta por correo.</label></div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="3" hidden>
+        <h4 style="font-family:'Space Grotesk';">Confirma tus datos</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de enviar</p>
+        <div class="summary">
+          <div class="row"><span>Nombre</span><b>María Fernanda López</b></div>
+          <div class="row"><span>Correo</span><b>maria@correo.com</b></div>
+          <div class="row"><span>Línea de interés</span><b>NextWelltive — Azul</b></div>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary" style="font-family:'Inter';">Enviar</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>Natura Design System — Propuesta 2 de 3 · generado para revisión de cliente</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

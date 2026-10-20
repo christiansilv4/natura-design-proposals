@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botánico — Natura Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="tabs">
+  <a href="index.html">← Inicio</a>
+  <a href="botanico.html" class="active" style="--dot:#DF1995"><i style="background:#DF1995"></i>Botánico</a>
+  <a href="clinico.html" style="--dot:#00C1D4"><i style="background:#00C1D4"></i>Clínico</a>
+  <a href="tropical.html" style="--dot:#78BE21"><i style="background:#78BE21"></i>Tropical</a>
+</nav>
+
+<div class="wrap">
+<section class="proposal" style="
+  background:#F7F2E7; --divider:#E6D9BE; --control-border:#D4C29C; --ink-muted:#8A7A5C;
+  --secondary:var(--color-next-colour); --on-secondary:#fff; --accent:var(--color-next-colour);
+  --font-display:'DM Sans'; --font-body:'DM Sans'; --r-btn:999px; --r-img:20px; --r-card:12px;">
+  <div class="band"><div style="background:var(--color-primary)"></div></div>
+  <div class="header">
+    <span class="eyebrow">Natura Design System — Propuesta 1</span>
+    <h1>Botánico</h1>
+    <p>Cálido y confiable. Fondo bone, verde como ancla, acentos de línea de negocio usados con moderación.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores de marca — fuente oficial</h2>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:var(--color-verde-natura)"></div><b>Verde Natura</b><span>Pantone 355C · #048643</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-navy)"></div><b>Navy</b><span>Pantone 546C · #142D31</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-colour)"></div><b>NextColour</b><span>#DF1995 · Rosa</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-savour)"></div><b>NextSavour</b><span>#DC4405 · Naranja</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-welltive)"></div><b>NextWelltive</b><span>#00C1D4 · Azul</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--color-next-protech)"></div><b>NextProtech</b><span>#78BE21 · Verde limón</span></div>
+    </div>
+    <p class="note">Esta propuesta usa Verde Natura como primary y NextColour (Rosa) como secondary — el resto queda disponible para categorización de líneas de negocio.</p>
+  </div>
+
+  <div class="section">
+    <h2>Colores — roles</h2>
+    <div class="role-cards">
+      <div class="role-card primary"><b>primary</b><span>#048643 · on-primary #FFFFFF · AA 5.1:1</span></div>
+      <div class="role-card secondary"><b>secondary</b><span>#DF1995 · AA 4.5:1 (bold)</span></div>
+    </div>
+    <div class="tint-banner"><b>primary-tint #E3F0E7</b><span>Banners y fondos suaves de marca</span></div>
+    <div class="ramp">
+      <div style="background:#F7F2E7; color:#8A7A5C">background</div>
+      <div style="background:#FFFDF8; color:#8A7A5C">surface</div>
+      <div style="background:#E6D9BE; color:#5b4f38">divider</div>
+      <div style="background:#D4C29C; color:#3c4b44">control-border</div>
+      <div style="background:#8A7A5C; color:#fff">ink-muted</div>
+      <div style="background:#142D31; color:#fff">ink</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal"><i style="background:var(--color-success)"></i>success</div>
+      <div class="signal"><i style="background:var(--color-warning)"></i>warning</div>
+      <div class="signal"><i style="background:var(--color-alert)"></i>alert</div>
+      <div class="signal"><i style="background:var(--color-link)"></i>link</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tipografía — DM Sans</h2>
+    <div class="type-row"><span class="label">display · 48</span><span style="font-family:'DM Sans'; font-weight:800; font-size:48px; letter-spacing:-0.02em;">Extracto</span></div>
+    <div class="type-row"><span class="label">headline · 34</span><span style="font-family:'DM Sans'; font-weight:700; font-size:34px;">Extracto natural</span></div>
+    <div class="type-row"><span class="label">title · 24</span><span style="font-family:'DM Sans'; font-weight:600; font-size:24px;">Nuestros productos</span></div>
+    <div class="type-row"><span class="label">subtitle · 16</span><span style="font-family:'DM Sans'; font-weight:600; font-size:16px;">Composición y origen</span></div>
+    <div class="type-row"><span class="label">body · 16</span><span style="font-family:'DM Sans'; font-size:16px; color:#3c4b44;">Texto para párrafos e interfaces.</span></div>
+    <div class="type-row"><span class="label">body-small · 14</span><span style="font-family:'DM Sans'; font-size:14px; color:#5b6b63;">Notas al pie y aclaraciones.</span></div>
+    <div class="type-row"><span class="label">caption · 12</span><span style="font-family:'DM Sans'; font-size:12px; color:#8a9690;">Lote 048643 — NE-01</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Botones</h2>
+    <div class="btn-row">
+      <div class="btn primary">Primario</div>
+      <div class="btn secondary">Secundario</div>
+      <div class="btn text">Texto</div>
+      <div class="btn disabled">Deshabilitado</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Spacing — escala 4px, generosa</h2>
+    <div class="spacing-row"><div style="width:4px; height:14px;"></div><span>4 · xs</span></div>
+    <div class="spacing-row"><div style="width:8px; height:14px;"></div><span>8 · sm</span></div>
+    <div class="spacing-row"><div style="width:16px; height:14px;"></div><span>16 · md</span></div>
+    <div class="spacing-row"><div style="width:24px; height:14px;"></div><span>24 · lg</span></div>
+    <div class="spacing-row"><div style="width:32px; height:14px;"></div><span>32 · xl</span></div>
+    <div class="spacing-row"><div style="width:64px; height:14px;"></div><span>64 · 2xl</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Corner radius — orgánico</h2>
+    <div class="radius-row">
+      <div class="radius-swatch"><div style="border-radius:4px"></div><span>4 · xs</span></div>
+      <div class="radius-swatch"><div style="border-radius:8px"></div><span>8 · sm</span></div>
+      <div class="radius-swatch"><div style="border-radius:12px"></div><span>12 · md</span></div>
+      <div class="radius-swatch"><div style="border-radius:20px"></div><span>20 · lg</span></div>
+      <div class="radius-swatch"><div style="border-radius:999px"></div><span>full</span></div>
+    </div>
+  </div>
+
+  <div class="section why">
+    <h2>Por qué Botánico</h2>
+    <p>Cálido y cercano antes que botánico-literal: DM Sans, fondo oat y radios suaves comunican bienestar sin hojas ni degradados verdes. El Rosa de NextColour queda como único acento para que Verde Natura se reserve para la acción principal — y no compita con el resto de la pantalla.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ejemplo aplicado — formulario wizard</h2>
+    <div class="wizard">
+      <div class="wizard-progress">
+        <div class="dot active" data-step-dot="1">1</div><div class="bar"></div>
+        <div class="dot" data-step-dot="2">2</div><div class="bar"></div>
+        <div class="dot" data-step-dot="3">3</div>
+      </div>
+      <div class="wizard-step" data-step-panel="1">
+        <h4>Tus datos</h4>
+        <p class="substep">Paso 1 de 3 — para crear tu cuenta</p>
+        <div class="field"><label>Nombre completo</label><input type="text" placeholder="María Fernanda López"></div>
+        <div class="field"><label>Correo electrónico</label><input type="email" placeholder="maria@correo.com"><span class="hint">Te enviaremos ahí la confirmación del pedido.</span></div>
+        <div class="wizard-actions"><div class="btn primary" data-next="2">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="2" hidden>
+        <h4>Preferencias</h4>
+        <p class="substep">Paso 2 de 3 — así personalizamos tus recomendaciones</p>
+        <div class="field"><label>Línea de interés</label>
+          <select>
+            <option>NextColour — Rosa</option>
+            <option>NextSavour — Naranja</option>
+            <option>NextWelltive — Azul</option>
+            <option>NextProtech — Verde limón</option>
+          </select>
+        </div>
+        <div class="field"><label>Presentación</label>
+          <select>
+            <option>30ml · viaje</option>
+            <option>60ml · uso diario</option>
+            <option>100ml · ahorro</option>
+          </select>
+        </div>
+        <div class="field"><label>¿Cómo nos conociste?</label>
+          <select>
+            <option>Redes sociales</option>
+            <option>Recomendación</option>
+            <option>Tienda física</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"><span class="hint">Opcional — para avisarte del envío.</span></div>
+        <div class="checkbox-field"><input type="checkbox" id="news-bot" checked><label for="news-bot">Quiero recibir novedades de Natura Extracta por correo.</label></div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="1">Atrás</div><div class="btn primary" data-next="3">Continuar</div></div>
+      </div>
+      <div class="wizard-step" data-step-panel="3" hidden>
+        <h4>Confirma tus datos</h4>
+        <p class="substep">Paso 3 de 3 — revisa antes de enviar</p>
+        <div class="summary">
+          <div class="row"><span>Nombre</span><b>María Fernanda López</b></div>
+          <div class="row"><span>Correo</span><b>maria@correo.com</b></div>
+          <div class="row"><span>Línea de interés</span><b>NextColour — Rosa</b></div>
+        </div>
+        <div class="wizard-actions"><div class="btn secondary" data-back="2">Atrás</div><div class="btn primary">Enviar</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>Natura Design System — Propuesta 1 de 3 · generado para revisión de cliente</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
